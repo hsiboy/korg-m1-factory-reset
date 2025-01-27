@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card';
+import { Button } from './components/ui/button';
+import { Alert, AlertDescription, AlertTitle } from './components/ui/alert';
 import { AlertCircle, CheckCircle2, XCircle } from 'lucide-react';
 
 const KorgM1Updater = () => {
