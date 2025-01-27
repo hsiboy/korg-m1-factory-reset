@@ -16,8 +16,7 @@ const FILE_TYPES = {
 
 const KorgM1Updater = () => {
   const [midiAccess, setMidiAccess] = useState(null);
-  const [midiOutputs, setMidiOutputs] = useState([]);
-  const [selectedOutput, setSelectedOutput] = useState(null);
+  const [midiOutput, setMidiOutput] = useState(null);
   const [status, setStatus] = useState('waiting');
   const [errorMessage, setErrorMessage] = useState('');
   const [selectedModel, setSelectedModel] = useState(null);
@@ -25,32 +24,15 @@ const KorgM1Updater = () => {
   const [sysexData, setSysexData] = useState(null);
   const [dragActive, setDragActive] = useState(false);
 
-  // Update available MIDI outputs
-  const updateDevices = useCallback((access) => {
-    const outputs = Array.from(access.outputs.values());
-    setMidiOutputs(outputs);
-    
-    // If currently selected output is no longer available, clear it
-    if (selectedOutput && !outputs.find(output => output.id === selectedOutput.id)) {
-      setSelectedOutput(null);
-    }
-  }, [selectedOutput]);
-
-  // Handle MIDI device connection/disconnection
-  const handleStateChange = useCallback((event) => {
-    console.log(`MIDI port ${event.port.name} ${event.port.state}`);
-    updateDevices(midiAccess);
-  }, [midiAccess, updateDevices]);
-
   useEffect(() => {
     if (navigator.requestMIDIAccess) {
       navigator.requestMIDIAccess({ sysex: true })
         .then(access => {
           setMidiAccess(access);
-          updateDevices(access);
-          
-          // Set up connection/disconnection listeners
-          access.onstatechange = handleStateChange;
+          const outputs = Array.from(access.outputs.values());
+          if (outputs.length > 0) {
+            setMidiOutput(outputs[0]);
+          }
         })
         .catch(error => {
           setStatus('error');
@@ -60,7 +42,7 @@ const KorgM1Updater = () => {
       setStatus('error');
       setErrorMessage('Web MIDI API is not supported in your browser. Please use Chrome or Edge.');
     }
-  }, [handleStateChange, updateDevices]);
+  }, []);
 
   const loadSysexFile = async (fileType) => {
     try {
@@ -93,9 +75,9 @@ const KorgM1Updater = () => {
   }, []);
 
   const sendSysEx = async () => {
-    if (!selectedOutput || !sysexData) {
+    if (!midiOutput || !sysexData) {
       setStatus('error');
-      setErrorMessage('No MIDI output device selected or no data loaded. Please check your connections and try again.');
+      setErrorMessage('No MIDI output device found or no data loaded. Please check your connections and try again.');
       return;
     }
 
@@ -106,7 +88,7 @@ const KorgM1Updater = () => {
       const chunkSize = 256;
       for (let i = 0; i < sysexData.length; i += chunkSize) {
         const chunk = sysexData.slice(i, i + chunkSize);
-        selectedOutput.send(chunk);
+        midiOutput.send(chunk);
         // Add a small delay between chunks
         await new Promise(resolve => setTimeout(resolve, 100));
       }
@@ -124,31 +106,6 @@ const KorgM1Updater = () => {
         <CardTitle>Korg M1 Factory Preset Updater</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        {/* MIDI Device Selection */}
-        <div>
-          <h3 className="text-sm font-medium mb-2">Select MIDI Output:</h3>
-          <select
-            className="w-full p-2 border rounded-md bg-white"
-            value={selectedOutput?.id || ''}
-            onChange={(e) => {
-              const output = midiOutputs.find(out => out.id === e.target.value);
-              setSelectedOutput(output);
-            }}
-          >
-            <option value="">Select MIDI Device</option>
-            {midiOutputs.map(output => (
-              <option key={output.id} value={output.id}>
-                {output.name} ({output.manufacturer || 'Unknown manufacturer'})
-              </option>
-            ))}
-          </select>
-          {midiOutputs.length === 0 && (
-            <p className="text-sm text-gray-500 mt-1">
-              No MIDI devices detected. Please connect a MIDI interface.
-            </p>
-          )}
-        </div>
-
         <div className="space-y-4">
           <div>
             <h3 className="text-sm font-medium mb-2">Select Your Model:</h3>
@@ -256,7 +213,7 @@ const KorgM1Updater = () => {
 
         <Button 
           onClick={sendSysEx}
-          disabled={!selectedOutput || !sysexData || status === 'uploading'}
+          disabled={!midiOutput || !sysexData || status === 'uploading'}
           className="w-full"
         >
           {status === 'uploading' ? 'Uploading...' : 'Send to M1'}
@@ -277,4 +234,3 @@ const KorgM1Updater = () => {
 };
 
 export default KorgM1Updater;
-
