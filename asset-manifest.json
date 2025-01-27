@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/korg-m1-factory-reset/static/css/main.8a13637f.css",
+    "main.js": "/korg-m1-factory-reset/static/js/main.f5d92881.js",
+    "index.html": "/korg-m1-factory-reset/index.html",
+    "main.8a13637f.css.map": "/korg-m1-factory-reset/static/css/main.8a13637f.css.map",
+    "main.f5d92881.js.map": "/korg-m1-factory-reset/static/js/main.f5d92881.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8a13637f.css",
+    "static/js/main.f5d92881.js"
+  ]
+}
