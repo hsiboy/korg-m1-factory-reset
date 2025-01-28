@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 # Korg M1 Factory Reset Tool
 
 A web-based tool for restoring factory presets to the Korg M1 synthesizer using WebMIDI. This tool helps M1 owners restore their synth's original sounds and sequences after a battery replacement or memory loss.
@@ -14,13 +25,12 @@ The M1 uses battery-backed RAM to store its sounds and sequences. When this batt
 
 ## Features
 
-- Support for all M1 variants (M1/M1R and M1EX/M1REX)
-- Restores both factory sounds and demo sequences
-- Works with any MIDI interface supported by WebMIDI
-- Multiple MIDI device selection for users with multiple interfaces
-- Drag-and-drop support for custom SysEx files
-- Real-time MIDI device connection monitoring
-- Clear visual feedback during the update process
+- 🎹 Support for all M1 variants (M1/M1R and M1EX/M1REX)
+- 💾 Restores both factory sounds and demo sequences
+- 🔌 Works with any MIDI interface supported by WebMIDI (Multiple MIDI device selection for users with multiple interfaces)
+- 🌐 Works directly in your browser - no installation needed
+- 📱 Drag-and-drop support for custom SysEx files
+
 
 ## Requirements
 
@@ -44,6 +54,20 @@ This project is built using:
 - WebMIDI API
 - Tailwind CSS
 
+## Browser Support
+
+| Browser | Support |
+|---------|---------|
+| Chrome  | ✅      |
+| Edge    | ✅      |
+| Opera   | ✅      |
+| Firefox | ❌      |
+| Safari  | ❌      |
+
+
+
+## Contributing
+
 To set up the development environment:
 
 ```bash
@@ -58,20 +82,49 @@ npm install
 npm start
 ```
 
-## Contributing
-
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-ISC License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
-- Thanks to Korg for creating the M1 and providing the factory SysEx files
+- The Korg M1 synthesizer was released in 1988 and was one of the most successful music workstations ever made
+- Thanks to the WebMIDI API team for making browser-based MIDI applications possible
 - Built using the WebMIDI API and React
 - Designed to help preserve these classic synthesizers
 
-## Safety Note
+## Support
 
-Always ensure your M1 has a working battery installed before attempting to restore factory presets. The battery voltage should be checked and the battery replaced if necessary before using this tool.
+If you encounter any issues or have questions, please:
+
+1. Check the [Issues](https://github.com/hsiboy/Korg-Librarian/issues) page
+2. Create a new issue if your problem isn't already listed
+3. Provide as much detail as possible, including:
+   - Browser version
+   - MIDI interface details
+   - Steps to reproduce the issue
+
+> [!NOTE]
+> Always ensure your M1 has a working battery installed before attempting to restore factory presets. The battery voltage should be checked and the battery replaced if necessary before using this tool.
+
+## Roadmap
+
+Future improvements planned:
+
+- [ ] Batch export/import of patches
+- [ ] Patch naming and categorization
+- [ ] Patch editing interface
+- [ ] MIDI channel configuration
+- [ ] Support for other Korg synthesizers
+
+---
+
+Created by [hsiboy](https://github.com/hsiboy) | [Report an Issue](https://github.com/hsiboy/Korg-Librarian/issues)
