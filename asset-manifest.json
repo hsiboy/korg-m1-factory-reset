@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/korg-m1-factory-reset/static/css/main.89419977.css",
-    "main.js": "/korg-m1-factory-reset/static/js/main.cb7e861f.js",
+    "main.css": "/korg-m1-factory-reset/static/css/main.a909121c.css",
+    "main.js": "/korg-m1-factory-reset/static/js/main.d330c1cd.js",
     "index.html": "/korg-m1-factory-reset/index.html",
-    "main.89419977.css.map": "/korg-m1-factory-reset/static/css/main.89419977.css.map",
-    "main.cb7e861f.js.map": "/korg-m1-factory-reset/static/js/main.cb7e861f.js.map"
+    "main.a909121c.css.map": "/korg-m1-factory-reset/static/css/main.a909121c.css.map",
+    "main.d330c1cd.js.map": "/korg-m1-factory-reset/static/js/main.d330c1cd.js.map"
   },
   "entrypoints": [
-    "static/css/main.89419977.css",
-    "static/js/main.cb7e861f.js"
+    "static/css/main.a909121c.css",
+    "static/js/main.d330c1cd.js"
   ]
 }
