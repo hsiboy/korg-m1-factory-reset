@@ -122,6 +122,21 @@ const KorgM1Updater = () => {
     <Card className="w-full max-w-xl mx-auto">
       <CardHeader>
         <CardTitle>Korg M1 Factory Preset Updater</CardTitle>
+        <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <h3 className="font-medium text-blue-900 mb-2">Setup Instructions:</h3>
+          <ol className="list-decimal pl-5 space-y-2 text-sm text-blue-900">
+            <li>Connect MIDI OUT from your computer's MIDI interface to MIDI IN on the M1</li>
+            <li>Power on your M1</li>
+            <li>On the M1, press <span className="font-mono bg-gray-200 px-1 rounded">GLOBAL</span></li>
+            <li>Press <span className="font-mono bg-gray-200 px-1 rounded">PAGE+</span> until you see "MIDI DUMP"</li>
+            <li>Use the slider to select "RECEIVE" mode</li>
+            <li>Select your MIDI interface and M1 model below</li>
+            <li>Choose Factory Sounds or Demo Sequences to restore</li>
+            <li>Click "Send to M1" and wait for the transfer to complete</li>
+            <li>The M1 will automatically restart when the transfer is complete</li>
+          </ol>
+          <p className="mt-4 text-sm text-blue-800 font-medium">⚠️ Important: Ensure your M1 has a working battery installed before proceeding</p>
+        </div>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* MIDI Device Selection */}
@@ -152,18 +167,18 @@ const KorgM1Updater = () => {
         <div className="space-y-4">
           <div>
             <h3 className="text-sm font-medium mb-2">Select Your Model:</h3>
-            <div className="grid grid-cols-2 gap-2">
+            <select
+              className="w-full p-2 border rounded-md bg-white"
+              value={selectedModel || ''}
+              onChange={(e) => setSelectedModel(e.target.value)}
+            >
+              <option value="">Select M1 Model</option>
               {Object.entries(MODELS).map(([key, model]) => (
-                <Button
-                  key={key}
-                  onClick={() => setSelectedModel(key)}
-                  variant={selectedModel === key ? "default" : "outline"}
-                  className="w-full"
-                >
+                <option key={key} value={key}>
                   {model.name}
-                </Button>
+                </option>
               ))}
-            </div>
+            </select>
           </div>
 
           {selectedModel && (
