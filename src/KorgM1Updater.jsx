@@ -292,4 +292,3 @@ const KorgM1Updater = () => {
 };
 
 export default KorgM1Updater;
-

@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Korg M1 Factory Reset Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web-based tool for restoring factory presets to the Korg M1 synthesizer using WebMIDI. This tool helps M1 owners restore their synth's original sounds and sequences after a battery replacement or memory loss.
 
-## Available Scripts
+## About the Korg M1
 
-In the project directory, you can run:
+The Korg M1 was one of the most popular music workstations ever made, produced from 1988 to 1995. It was available in several variants:
+- Korg M1 (original keyboard workstation)
+- Korg M1R (rack-mount version)
+- Korg M1EX (expanded version with more memory)
+- Korg M1REX (rack-mount expanded version)
 
-### `npm start`
+The M1 uses battery-backed RAM to store its sounds and sequences. When this battery fails, the unit loses all its preset data. This tool helps restore the factory data after battery replacement.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Support for all M1 variants (M1/M1R and M1EX/M1REX)
+- Restores both factory sounds and demo sequences
+- Works with any MIDI interface supported by WebMIDI
+- Multiple MIDI device selection for users with multiple interfaces
+- Drag-and-drop support for custom SysEx files
+- Real-time MIDI device connection monitoring
+- Clear visual feedback during the update process
 
-### `npm test`
+## Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- A web browser that supports WebMIDI (Chrome or Edge recommended)
+- A MIDI interface connected to your computer
+- Your Korg M1 connected via MIDI
+- A working battery installed in your M1
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Visit [https://hsiboy.github.io/korg-m1-factory-reset](https://hsiboy.github.io/korg-m1-factory-reset)
+2. Select your MIDI output device
+3. Choose your M1 model (M1/M1R or M1EX/M1REX)
+4. Select whether to restore factory sounds or demo sequences
+5. Click "Send to M1" and wait for the transfer to complete
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project is built using:
+- React
+- WebMIDI API
+- Tailwind CSS
 
-### `npm run eject`
+To set up the development environment:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+# Clone the repository
+git clone https://github.com/hsiboy/korg-m1-factory-reset.git
+cd korg-m1-factory-reset
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Install dependencies
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Start the development server
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
 
-## Learn More
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ISC License
 
-### Code Splitting
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Thanks to Korg for creating the M1 and providing the factory SysEx files
+- Built using the WebMIDI API and React
+- Designed to help preserve these classic synthesizers
 
-### Analyzing the Bundle Size
+## Safety Note
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Always ensure your M1 has a working battery installed before attempting to restore factory presets. The battery voltage should be checked and the battery replaced if necessary before using this tool.
